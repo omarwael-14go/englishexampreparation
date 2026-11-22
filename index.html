@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Exam Preparation — Interactive Study Platform</title>
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-group" onclick="App.navigateTo('home')">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>English Prep <span class="logo-tag">Source-Based</span></h1>
+          <p>Lecture PowerPoint Exam Question & Answer Bank</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item"><button class="active" data-view="home" onclick="App.navigateTo('home')">Home</button></li>
+          <li class="nav-item"><button data-view="practice" onclick="App.navigateTo('practice')">Practice</button></li>
+          <li class="nav-item"><button data-view="exam" onclick="App.navigateTo('exam')">Exam Mode</button></li>
+          <li class="nav-item"><button data-view="flashcards" onclick="App.navigateTo('flashcards')">Flashcards</button></li>
+          <li class="nav-item"><button data-view="review" onclick="App.navigateTo('review')">Quick Review</button></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Light / Dark Mode Toggle -->
+        <button class="btn-theme-toggle" id="themeToggleBtn" onclick="App.toggleTheme()" title="Switch Light / Dark Mode">
+          <span id="themeToggleIcon" style="display:flex; align-items:center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span id="themeToggleLabel">Light Mode</span>
+        </button>
+
+        <div class="overall-progress-pill" title="Overall Completed Questions">
+          <span id="headerProgressPct">0%</span>
+          <div class="progress-pill-bar">
+            <div class="progress-pill-fill" id="headerProgressBar"></div>
+          </div>
+          <span id="headerProgressCount" style="color: var(--text-muted);">0/73</span>
+        </div>
+        <button class="btn-icon-subtle" onclick="App.showResetModal()" title="Reset All Progress">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="main-wrapper">
+
+    <!-- ==========================================
+         VIEW 1: HOME PAGE
+         ========================================== -->
+    <section id="view-home" class="view-section active">
+      <div class="hero-banner">
+        <div class="hero-badge-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          100% Slide-Verified Questions & Answers
+        </div>
+        <h2 class="hero-title">English Exam <span>Preparation</span></h2>
+        <p class="hero-subtitle">Practice your lecture questions and get instant feedback. Every question, option, and answer key is extracted directly from the lecture PowerPoint slides.</p>
+        
+        <div class="hero-stats-row">
+          <div class="stat-card">
+            <div class="stat-icon cyan">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="homeTotalQuestions">73</div>
+              <div class="stat-label">Total Questions</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon teal">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value">5</div>
+              <div class="stat-label">Lectures</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon emerald">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="homeCompletedCount">0</div>
+              <div class="stat-label">Completed</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon amber">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <div class="stat-info">
+              <div class="stat-value" id="homeProgressPct">0%</div>
+              <div class="stat-label">Overall Progress</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="App.startPracticeAll()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Practice All Lectures
+          </button>
+          <button class="btn-secondary" onclick="App.navigateTo('exam')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            Take an Exam
+          </button>
+          <button class="btn-secondary" onclick="App.navigateTo('flashcards')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            Flashcard Flip
+          </button>
+        </div>
+      </div>
+
+      <!-- Lectures Grid -->
+      <div class="section-header-row">
+        <div>
+          <h2>Course Lectures</h2>
+          <p>Select a lecture to practice its original PowerPoint questions</p>
+        </div>
+      </div>
+
+      <div class="lecture-cards-grid" id="lectureCardsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Study Modes Overview -->
+      <div class="section-header-row">
+        <div>
+          <h2>Available Study Modes</h2>
+          <p>Different ways to master the lecture material</p>
+        </div>
+      </div>
+
+      <div class="study-modes-strip">
+        <div class="mode-strip-card" onclick="App.navigateTo('practice')">
+          <span class="stat-icon cyan" style="width:36px; height:36px; font-size:1rem;">🎯</span>
+          <h3>Practice Mode</h3>
+          <p>Step-by-step interactive questions with immediate feedback, detailed slide answers, and explanations.</p>
+        </div>
+        <div class="mode-strip-card" onclick="App.navigateTo('exam')">
+          <span class="stat-icon teal" style="width:36px; height:36px; font-size:1rem;">📝</span>
+          <h3>Exam Mode</h3>
+          <p>Simulate test conditions without answer reveals until the end. Get complete score analytics and reviews.</p>
+        </div>
+        <div class="mode-strip-card" onclick="App.navigateTo('flashcards')">
+          <span class="stat-icon amber" style="width:36px; height:36px; font-size:1rem;">🎴</span>
+          <h3>Flashcard Mode</h3>
+          <p>Test active recall. Click or press space to flip the card and reveal verified answers from the slides.</p>
+        </div>
+        <div class="mode-strip-card" onclick="App.navigateTo('review')">
+          <span class="stat-icon emerald" style="width:36px; height:36px; font-size:1rem;">🔍</span>
+          <h3>Quick Review</h3>
+          <p>Browse, filter, and search through all 73 questions and answers in a compact reference layout.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 2: PRACTICE MODE
+         ========================================== -->
+    <section id="view-practice" class="view-section">
+      <div class="quiz-top-bar">
+        <div class="quiz-breadcrumbs">
+          <button onclick="App.navigateTo('home')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back to Lectures
+          </button>
+          <span>/</span>
+          <span id="practiceCurrentLectureBreadcrumb" style="color: var(--text-primary); font-weight: 600;">Ambiguity</span>
+        </div>
+
+        <div class="quiz-filter-group">
+          <label style="font-size: 0.85rem; color: var(--text-muted);">Lecture:</label>
+          <select id="practiceLectureSelect" class="select-custom" onchange="App.changePracticeLecture(this.value)">
+            <option value="all">Practice All Lectures (73 Questions)</option>
+            <option value="ambiguity">01. Ambiguity (16 Questions)</option>
+            <option value="collocations">02. Collocations (12 Questions)</option>
+            <option value="presentations">03. Presentations (22 Questions)</option>
+            <option value="working-life">04. Working Life (11 Questions)</option>
+            <option value="writing-a-cv">05. Writing a CV (12 Questions)</option>
+          </select>
+          <button class="btn-secondary" style="padding: 0.5rem 0.8rem; font-size: 0.85rem;" onclick="App.resetCurrentLecturePractice()" title="Reset progress for this lecture">
+            Reset Lecture
+          </button>
+        </div>
+      </div>
+
+      <!-- Practice Quiz Card -->
+      <div class="quiz-card" id="practiceQuizCard">
+        <div class="quiz-card-header">
+          <div class="q-meta-left">
+            <span class="pill-lecture" id="practicePillLecture">Lecture 01</span>
+            <span class="pill-slide" id="practicePillSlide">Slide 8</span>
+            <span class="pill-type" id="practicePillType">Multiple Choice</span>
+          </div>
+          <div class="q-counter" id="practiceQCounter">Question 1 of 16</div>
+        </div>
+
+        <!-- Question Text -->
+        <h3 class="question-prompt" id="practiceQuestionText">Loading question...</h3>
+
+        <!-- Interactive Answer Container (Options, Inputs, or Matching) -->
+        <div id="practiceInteractiveArea">
+          <!-- Dynamic inputs rendered by JS -->
+        </div>
+
+        <!-- Feedback Alert Banner -->
+        <div class="feedback-banner" id="practiceFeedbackBanner">
+          <div class="feedback-title" id="practiceFeedbackTitle">Correct!</div>
+          <div class="feedback-body" id="practiceFeedbackBody">The correct answer is shown below.</div>
+          <div class="feedback-explanation" id="practiceFeedbackExplanation"></div>
+        </div>
+
+        <!-- Quiz Navigation and Action Controls -->
+        <div class="quiz-controls-bar">
+          <div class="quiz-nav-btns">
+            <button class="btn-secondary" id="practiceBtnPrev" onclick="App.practicePrev()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              Previous
+            </button>
+            <button class="btn-secondary" id="practiceBtnNext" onclick="App.practiceNext()">
+              Next
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <div class="quiz-main-action">
+            <button class="btn-check" id="practiceBtnCheck" onclick="App.practiceCheckAnswer()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Check Answer
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 3: EXAM MODE
+         ========================================== -->
+    <section id="view-exam" class="view-section">
+      <!-- Exam Setup Box -->
+      <div id="examSetupView" class="glass-panel exam-setup-box">
+        <h2 class="exam-setup-title">Lecture Exam Simulation</h2>
+        <p class="exam-setup-desc">Test your knowledge under exam conditions. Answers are hidden until you finish and submit your exam.</p>
+
+        <div class="exam-options-grid">
+          <div class="exam-option-card selected" data-scope="all" onclick="App.selectExamScope('all', this)">
+            <h4 style="margin-bottom: 0.3rem;">Full Course Exam</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">All 5 lectures & 73 questions</p>
+          </div>
+          <div class="exam-option-card" data-scope="ambiguity" onclick="App.selectExamScope('ambiguity', this)">
+            <h4 style="margin-bottom: 0.3rem;">01. Ambiguity</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">16 questions</p>
+          </div>
+          <div class="exam-option-card" data-scope="collocations" onclick="App.selectExamScope('collocations', this)">
+            <h4 style="margin-bottom: 0.3rem;">02. Collocations</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">12 questions</p>
+          </div>
+          <div class="exam-option-card" data-scope="presentations" onclick="App.selectExamScope('presentations', this)">
+            <h4 style="margin-bottom: 0.3rem;">03. Presentations</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">22 questions</p>
+          </div>
+          <div class="exam-option-card" data-scope="working-life" onclick="App.selectExamScope('working-life', this)">
+            <h4 style="margin-bottom: 0.3rem;">04. Working Life</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">11 questions</p>
+          </div>
+          <div class="exam-option-card" data-scope="writing-a-cv" onclick="App.selectExamScope('writing-a-cv', this)">
+            <h4 style="margin-bottom: 0.3rem;">05. Writing a CV</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">12 questions</p>
+          </div>
+        </div>
+
+        <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="App.startExam()">
+          Start Examination
+        </button>
+      </div>
+
+      <!-- Active Exam Interface -->
+      <div id="examActiveView" style="display: none;">
+        <div class="exam-active-layout">
+          <!-- Main Exam Question Area -->
+          <div class="quiz-card">
+            <div class="quiz-card-header">
+              <div class="q-meta-left">
+                <span class="pill-lecture" id="examPillLecture">Lecture 01</span>
+                <span class="pill-slide" id="examPillSlide">Slide 8</span>
+              </div>
+              <div class="q-counter" id="examQCounter">Question 1 of 73</div>
+            </div>
+
+            <h3 class="question-prompt" id="examQuestionText">Exam Question Text</h3>
+
+            <div id="examInteractiveArea">
+              <!-- Rendered options without immediate feedback -->
+            </div>
+
+            <div class="quiz-controls-bar" style="margin-top: 2rem;">
+              <div class="quiz-nav-btns">
+                <button class="btn-secondary" id="examBtnPrev" onclick="App.examPrev()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                  Previous
+                </button>
+                <button class="btn-secondary" id="examBtnNext" onclick="App.examNext()">
+                  Next
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+
+              <button class="btn-primary" style="background: linear-gradient(135deg, var(--emerald-primary), #059669);" onclick="App.confirmSubmitExam()">
+                Submit Exam
+              </button>
+            </div>
+          </div>
+
+          <!-- Exam Palette Navigator -->
+          <div class="glass-panel exam-palette-panel">
+            <div class="exam-palette-title">
+              <span>Question Palette</span>
+              <span id="examPaletteProgress" style="font-size: 0.8rem; color: var(--cyan-light);">0 Answered</span>
+            </div>
+            <div class="exam-palette-grid" id="examPaletteGrid">
+              <!-- Buttons 1 to N -->
+            </div>
+            <button class="btn-secondary" style="width: 100%; font-size: 0.82rem; justify-content: center;" onclick="App.exitExamEarly()">
+              Exit Exam
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exam Results View -->
+      <div id="examResultsView" class="exam-results-wrap" style="display: none;">
+        <div class="glass-panel exam-score-card">
+          <div class="score-badge-circle">
+            <div class="score-pct" id="examScorePct">85%</div>
+            <div class="score-label" id="examScoreGrade">PASSED</div>
+          </div>
+          <h2 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem;" id="examResultsTitle">Exam Completed!</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Review your answers below compared directly to the PowerPoint slide keys.</p>
+
+          <div class="score-breakdown-row">
+            <div class="breakdown-item">
+              <span class="breakdown-val correct" id="examCountCorrect">0</span>
+              <span class="breakdown-lbl">Correct</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-val incorrect" id="examCountIncorrect">0</span>
+              <span class="breakdown-lbl">Incorrect</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-val unanswered" id="examCountUnanswered">0</span>
+              <span class="breakdown-lbl">Unanswered / Self-Review</span>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 1rem;">
+            <button class="btn-primary" onclick="App.startExam()">Retake Exam</button>
+            <button class="btn-secondary" onclick="App.navigateTo('home')">Return Home</button>
+          </div>
+        </div>
+
+        <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">Detailed Question Review</h3>
+        <div class="review-list" id="examReviewListContainer">
+          <!-- Detailed list of exam answers -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 4: FLASHCARDS
+         ========================================== -->
+    <section id="view-flashcards" class="view-section">
+      <div class="flashcard-wrapper">
+        <div class="flashcard-top-controls">
+          <div class="quiz-breadcrumbs">
+            <button onclick="App.navigateTo('home')">Back</button>
+            <span>/</span>
+            <span style="color: var(--text-primary); font-weight: 600;">Flashcard Study</span>
+          </div>
+
+          <div class="quiz-filter-group">
+            <select id="flashcardLectureSelect" class="select-custom" onchange="App.changeFlashcardLecture(this.value)">
+              <option value="all">All Lectures (73 Cards)</option>
+              <option value="ambiguity">01. Ambiguity</option>
+              <option value="collocations">02. Collocations</option>
+              <option value="presentations">03. Presentations</option>
+              <option value="working-life">04. Working Life</option>
+              <option value="writing-a-cv">05. Writing a CV</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3D Flip Card -->
+        <div class="flashcard-card" id="flashcardElement" onclick="App.flipFlashcard()">
+          <!-- Front Face -->
+          <div class="flashcard-face flashcard-front">
+            <div class="quiz-card-header" style="border: none; padding: 0;">
+              <div class="q-meta-left">
+                <span class="pill-lecture" id="flashcardPillLecture">Lecture 01</span>
+                <span class="pill-slide" id="flashcardPillSlide">Slide 8</span>
+              </div>
+              <div class="q-counter" id="flashcardCounter">Card 1 of 73</div>
+            </div>
+
+            <div style="margin: auto 0;">
+              <h3 class="question-prompt" style="font-size: 1.45rem; text-align: center;" id="flashcardFrontText">
+                Question Text
+              </h3>
+            </div>
+
+            <div class="flashcard-hint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              Click card or press <strong>Space</strong> to reveal answer
+            </div>
+          </div>
+
+          <!-- Back Face -->
+          <div class="flashcard-face flashcard-back">
+            <div class="quiz-card-header" style="border: none; padding: 0;">
+              <div class="q-meta-left">
+                <span class="pill-slide" style="background: var(--emerald-bg); color: var(--emerald-primary); border-color: var(--emerald-border);">Verified Answer</span>
+              </div>
+              <div class="q-counter" style="color: var(--cyan-light);">Slide Source Key</div>
+            </div>
+
+            <div style="margin: auto 0;">
+              <div class="flashcard-answer-box">
+                <div class="flashcard-answer-title">Answer Key</div>
+                <div class="flashcard-answer-text" id="flashcardBackText">Answer here</div>
+              </div>
+              <div id="flashcardBackExplanation" style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); text-align: center;"></div>
+            </div>
+
+            <div class="flashcard-hint">
+              Click card or press <strong>Space</strong> to flip back
+            </div>
+          </div>
+        </div>
+
+        <!-- Flashcard Nav Controls -->
+        <div class="flashcard-actions-row">
+          <button class="btn-secondary" onclick="App.flashcardPrev()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Previous
+          </button>
+          <button class="btn-primary" onclick="App.flipFlashcard()">
+            Flip Card
+          </button>
+          <button class="btn-secondary" onclick="App.flashcardNext()">
+            Next
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 5: QUICK REVIEW
+         ========================================== -->
+    <section id="view-review" class="view-section">
+      <div class="section-header-row">
+        <div>
+          <h2>Lecture Question & Answer Repository</h2>
+          <p>Instant search and reference across all 73 questions and verified slide answers</p>
+        </div>
+      </div>
+
+      <div class="review-header-bar">
+        <div class="review-search-wrap">
+          <svg class="search-icon-pos" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="reviewSearchInput" class="review-search-input" placeholder="Search questions, options, slide answers, or keywords..." oninput="App.onReviewSearch(this.value)">
+        </div>
+
+        <div class="review-filter-chips" id="reviewLectureFilters">
+          <button class="chip-btn active" data-filter="all" onclick="App.setReviewLectureFilter('all', this)">All Lectures</button>
+          <button class="chip-btn" data-filter="ambiguity" onclick="App.setReviewLectureFilter('ambiguity', this)">01. Ambiguity</button>
+          <button class="chip-btn" data-filter="collocations" onclick="App.setReviewLectureFilter('collocations', this)">02. Collocations</button>
+          <button class="chip-btn" data-filter="presentations" onclick="App.setReviewLectureFilter('presentations', this)">03. Presentations</button>
+          <button class="chip-btn" data-filter="working-life" onclick="App.setReviewLectureFilter('working-life', this)">04. Working Life</button>
+          <button class="chip-btn" data-filter="writing-a-cv" onclick="App.setReviewLectureFilter('writing-a-cv', this)">05. Writing a CV</button>
+        </div>
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;" id="reviewCountStatus">
+        Showing 73 questions
+      </div>
+
+      <div class="review-list" id="reviewQuestionsList">
+        <!-- Dynamically rendered review items -->
+      </div>
+    </section>
+
+    <!-- Page Footer -->
+    <footer class="app-footer">
+      <div class="footer-credit">developed by <strong>Omar Wael Omar</strong></div>
+    </footer>
+
+  </main>
+
+  <!-- Developer Attribution Corner Pill (Bottom-Left) -->
+  <div class="developer-credit-pill" title="Website Developer">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+      <circle cx="12" cy="7" r="4"></circle>
+    </svg>
+    <span>developed by <strong>Omar Wael Omar</strong></span>
+  </div>
+
+  <!-- Keyboard Shortcuts Indicator (Bottom-Right) -->
+  <div class="keyboard-hints-pill">
+    <span>Shortcuts:</span>
+    <kbd>1-4</kbd> Options
+    <kbd>Enter</kbd> Check Answer
+    <kbd>← / →</kbd> Prev / Next
+    <kbd>Space</kbd> Flip Card
+  </div>
+
+  <!-- Reset Confirmation Modal -->
+  <div class="modal-overlay" id="resetModal">
+    <div class="modal-box">
+      <div class="modal-icon-wrap">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      </div>
+      <h3 class="modal-title">Reset All Progress?</h3>
+      <p class="modal-desc">This will clear all your answered questions, practice scores, and exam records stored in your browser. This action cannot be undone.</p>
+      <div class="modal-btns">
+        <button class="btn-secondary" onclick="App.closeResetModal()">Cancel</button>
+        <button class="btn-danger" onclick="App.confirmResetAll()">Reset Progress</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="questions-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
