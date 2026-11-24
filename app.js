@@ -53,6 +53,7 @@ const App = (function() {
     bindKeyboardEvents();
     renderHomeStats();
     renderLectureCards();
+    renderMidtermCards();
     initPracticeQuestions('all');
     initFlashcardQuestions('all');
     renderQuickReview();
@@ -206,6 +207,7 @@ const App = (function() {
     if (viewName === 'home') {
       renderHomeStats();
       renderLectureCards();
+      renderMidtermCards();
     } else if (viewName === 'practice') {
       renderPracticeQuestion();
     } else if (viewName === 'flashcards') {
@@ -284,12 +286,87 @@ const App = (function() {
     navigateTo('practice');
   }
 
+  
   // ==========================================
+  // MID-TERM EXAMS SECTION LOGIC (NEW)
+  // ==========================================
+  function renderMidtermCards() {
+    const container = document.getElementById('midtermCardsContainer');
+    if (!container || typeof MIDTERM_EXAMS_DATA === 'undefined') return;
+
+    container.innerHTML = '';
+
+    MIDTERM_EXAMS_DATA.forEach(exam => {
+      const examQuestions = QUESTIONS_DATA.filter(q => q.lectureId === exam.id);
+      const totalQ = examQuestions.length;
+      const completedQ = examQuestions.filter(q => state.progress[q.id] && state.progress[q.id].answered).length;
+      const pct = totalQ > 0 ? Math.round((completedQ / totalQ) * 100) : 0;
+      const isComplete = pct === 100;
+
+      const card = document.createElement('div');
+      card.className = 'midterm-exam-card';
+      card.innerHTML = `
+        <div class="lecture-card-top">
+          <span class="midterm-badge-tag">${exam.badge}</span>
+          <span class="lecture-q-count" style="color: var(--amber-light);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            ${totalQ} Questions (10 T/F + 10 MCQ)
+          </span>
+        </div>
+        <h3 class="lecture-card-title">${exam.title}</h3>
+        <p class="lecture-card-desc">${exam.shortDesc}</p>
+        <div class="lecture-card-progress">
+          <div class="progress-label-row">
+            <span>Solved: ${completedQ}/${totalQ}</span>
+            <span style="color: var(--amber-light); font-weight: 600;">${pct}%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill ${isComplete ? 'complete' : ''}" style="width: ${pct}%; background: linear-gradient(90deg, #F59E0B, #10B981);"></div>
+          </div>
+        </div>
+        <div class="lecture-card-actions">
+          <button class="btn-card-practice" onclick="App.startPracticeMidterm('${exam.id}')" style="background: rgba(245, 158, 11, 0.15); border-color: rgba(245, 158, 11, 0.4); color: var(--amber-light);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Start Practice
+          </button>
+          <button class="btn-card-sub" onclick="App.startExamScope('${exam.id}')" title="Take under Exam conditions">
+            Exam Mode
+          </button>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function startPracticeMidterm(examId) {
+    state.practiceLectureId = examId;
+    const select = document.getElementById('practiceLectureSelect');
+    if (select) select.value = examId;
+
+    initPracticeQuestions(examId);
+    navigateTo('practice');
+  }
+
+  function scrollToMidterms() {
+    navigateTo('home');
+    setTimeout(() => {
+      const el = document.getElementById('midtermSection');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+        el.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.4)';
+        setTimeout(() => { el.style.boxShadow = ''; }, 1800);
+      }
+    }, 120);
+  }
+
+// ==========================================
   // PRACTICE MODE LOGIC
   // ==========================================
   function initPracticeQuestions(lectureId) {
     if (lectureId === 'all') {
-      state.practiceQuestions = [...QUESTIONS_DATA];
+      state.practiceQuestions = QUESTIONS_DATA.filter(q => !q.lectureId.startsWith('midterm-exam-'));
+    } else if (lectureId === 'midterm-all') {
+      state.practiceQuestions = QUESTIONS_DATA.filter(q => q.lectureId.startsWith('midterm-exam-'));
     } else {
       state.practiceQuestions = QUESTIONS_DATA.filter(q => q.lectureId === lectureId);
     }
@@ -761,7 +838,9 @@ const App = (function() {
 
   function startExam() {
     if (state.examScope === 'all') {
-      state.examQuestions = [...QUESTIONS_DATA];
+      state.examQuestions = QUESTIONS_DATA.filter(q => !q.lectureId.startsWith('midterm-exam-'));
+    } else if (state.examScope === 'midterm-all') {
+      state.examQuestions = QUESTIONS_DATA.filter(q => q.lectureId.startsWith('midterm-exam-'));
     } else {
       state.examQuestions = QUESTIONS_DATA.filter(q => q.lectureId === state.examScope);
     }
@@ -1123,7 +1202,9 @@ const App = (function() {
   function initFlashcardQuestions(lectureId) {
     state.flashcardLectureId = lectureId;
     if (lectureId === 'all') {
-      state.flashcardQuestions = [...QUESTIONS_DATA];
+      state.flashcardQuestions = QUESTIONS_DATA.filter(q => !q.lectureId.startsWith('midterm-exam-'));
+    } else if (lectureId === 'midterm-all') {
+      state.flashcardQuestions = QUESTIONS_DATA.filter(q => q.lectureId.startsWith('midterm-exam-'));
     } else {
       state.flashcardQuestions = QUESTIONS_DATA.filter(q => q.lectureId === lectureId);
     }
@@ -1211,7 +1292,11 @@ const App = (function() {
 
     // Filter by lecture
     if (state.reviewLectureFilter !== 'all') {
-      filtered = filtered.filter(q => q.lectureId === state.reviewLectureFilter);
+      if (state.reviewLectureFilter === 'midterm-all') {
+        filtered = filtered.filter(q => q.lectureId.startsWith('midterm-exam-'));
+      } else {
+        filtered = filtered.filter(q => q.lectureId === state.reviewLectureFilter);
+      }
     }
 
     // Filter by search query
@@ -1382,6 +1467,8 @@ const App = (function() {
     navigateTo,
     startPracticeAll,
     startPracticeLecture,
+    startPracticeMidterm,
+    scrollToMidterms,
     changePracticeLecture,
     resetCurrentLecturePractice,
     practiceNext,

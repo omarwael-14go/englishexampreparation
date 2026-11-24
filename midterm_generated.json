@@ -1,0 +1,990 @@
+{
+  "exams": [
+    {
+      "id": "midterm-exam-1",
+      "title": "Mid-Term Exam 1",
+      "badge": "Exam 1",
+      "shortDesc": "Official Mid-Term Exam 1 (Time: 1 hour) • 10 True/False & 10 MCQs with verified answer key.",
+      "icon": "file-check",
+      "questionCount": 20
+    },
+    {
+      "id": "midterm-exam-2",
+      "title": "Mid-Term Exam 2",
+      "badge": "Exam 2",
+      "shortDesc": "Official Mid-Term Exam 2 (Time: 1 hour) • 10 True/False & 10 MCQs with verified answer key.",
+      "icon": "file-check",
+      "questionCount": 20
+    },
+    {
+      "id": "midterm-exam-3",
+      "title": "Mid-Term Exam 3",
+      "badge": "Exam 3",
+      "shortDesc": "Official Mid-Term Exam 3 (Time: 1 hour) • 10 True/False & 10 MCQs with verified answer key.",
+      "icon": "file-check",
+      "questionCount": 20
+    }
+  ],
+  "questions": [
+    {
+      "id": "mte1-a-01",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "1. The collocation \"Catch up\" means to get back to the original schedule.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-02",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "2. Syntactic ambiguity occurs when one word has multiple meanings.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-03",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "3. The adjective \"Worthwhile\" means a good thing to do.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-04",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "4. The cultural expectations of the audience are of no particular interest to the speaker.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-05",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "5. Machine learning includes many techniques such as user interaction and context analysis.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-06",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "6. The word \"Actually\" is used as a polite way to contradict someone, and it means at the moment or right now.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-07",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "7. It is advisable to answer the questions of the audience in a presentation.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-08",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "8. Covering letter is used in the UK, while cover letter is used in the USA.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-09",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "9. If you learn many collocations, your English will sound more unusual and unnatural.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-a-10",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part A: True/False",
+      "type": "true-false",
+      "question": "10. A company may recruit employees directly by using the services of recruitment agencies.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-01",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "1. He had to ........... the lesson the hard way.",
+      "options": [
+        "a. do",
+        "b. teach",
+        "c. learn",
+        "d. study"
+      ],
+      "correctAnswer": "c. learn",
+      "explanation": "Verified Answer Key: c. learn",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-02",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "2. Concerning your voice in a presentation, you should speak in ...........",
+      "options": [
+        "a. the same tone",
+        "b. a monotone",
+        "c. formal tone",
+        "d. natural tone"
+      ],
+      "correctAnswer": "d. natural tone",
+      "explanation": "Verified Answer Key: d. natural tone",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-03",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "3. I think that ........... everything ........... our mid-range model.",
+      "options": [
+        "a. covers – on",
+        "b. covers up – up",
+        "c. covers on – up",
+        "d. covers – to"
+      ],
+      "correctAnswer": "a. covers – on",
+      "explanation": "Verified Answer Key: a. covers – on",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-04",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "4. Humans use ........... and context to understand ambiguous sentences.",
+      "options": [
+        "a. AI",
+        "b. Common sense",
+        "c. Machine learning",
+        "d. None"
+      ],
+      "correctAnswer": "b. Common sense",
+      "explanation": "Verified Answer Key: b. Common sense",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-05",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "5. When \"She\" has more than one reference, it is ........... ambiguity.",
+      "options": [
+        "a. Syntactic",
+        "b. Lexical",
+        "c. Referential",
+        "d. Both a & b"
+      ],
+      "correctAnswer": "c. Referential",
+      "explanation": "Verified Answer Key: c. Referential",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-06",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "6. An astronaut's job is highly ..........., it needs all his effort and attention.",
+      "options": [
+        "a. Challenging",
+        "b. Demanding",
+        "c. Stressful",
+        "d. All"
+      ],
+      "correctAnswer": "b. Demanding",
+      "explanation": "Verified Answer Key: b. Demanding",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-07",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "7. \"I need the mouse urgently.\" By human common sense, the word mouse in this sentence means ...........",
+      "options": [
+        "a. the opening in the face",
+        "b. electronic device",
+        "c. rat",
+        "d. Both a & b"
+      ],
+      "correctAnswer": "b. electronic device",
+      "explanation": "Verified Answer Key: b. electronic device",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-08",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "8. Our team is working overtime to ........... the project's deadline.",
+      "options": [
+        "a. meet",
+        "b. miss",
+        "c. extend",
+        "d. make"
+      ],
+      "correctAnswer": "a. meet",
+      "explanation": "Verified Answer Key: a. meet",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-09",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "9. .......... means makes us feel worried and anxious.",
+      "options": [
+        "a. Routine",
+        "b. Depressing",
+        "c. Stressful",
+        "d. Demanding"
+      ],
+      "correctAnswer": "c. Stressful",
+      "explanation": "Verified Answer Key: c. Stressful",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte1-b-10",
+      "lectureId": "midterm-exam-1",
+      "lectureTitle": "Mid-Term Exam 1",
+      "slide": "Mid-Term Exam 1 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "10. When preparing for a presentation you should not ...........",
+      "options": [
+        "a. Wait for latecomers",
+        "b. Labor",
+        "c. Digress",
+        "d. All"
+      ],
+      "correctAnswer": "d. All",
+      "explanation": "Verified Answer Key: d. All",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-01",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "1. Ambiguity means that a word, phrase, or sentence has more than one meaning.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-02",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "2. \"Bank\" (financial institution / side of a river) is an example of lexical ambiguity.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-03",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "3. \"Visiting relatives can be annoying\" is an example of referential ambiguity.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-04",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "4. AI can learn the intended meaning by asking the user for clarification.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-05",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "5. Collocations follow strict grammar rules that explain why certain words go together.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-06",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "6. Collocations are still understood even when they are used in a wrong combination.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-07",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "7. In a presentation, you should always wait for latecomers before you start.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-08",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "8. Telling an anecdote or mentioning a surprising statistic can gain the audience's attention.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-09",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "9. In the UK, it is necessary to include a photograph in your CV.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-a-10",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part A: True/False",
+      "type": "true-false",
+      "question": "10. In a CV, the most recent job or qualification should come first.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-01",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "1. \"Mary told Alice that she won the prize.\" This sentence has ........... ambiguity.",
+      "options": [
+        "a. Lexical",
+        "b. Syntactic",
+        "c. Referential",
+        "d. None"
+      ],
+      "correctAnswer": "c. Referential",
+      "explanation": "Verified Answer Key: c. Referential",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-02",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "2. Which is a very common collocation?",
+      "options": [
+        "a. fast food",
+        "b. quick food",
+        "c. rapid food",
+        "d. swift food"
+      ],
+      "correctAnswer": "a. fast food",
+      "explanation": "Verified Answer Key: a. fast food",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-03",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "3. Finish ........... schedule = finish before the planned date.",
+      "options": [
+        "a. behind",
+        "b. ahead of",
+        "c. on with",
+        "d. within"
+      ],
+      "correctAnswer": "b. ahead of",
+      "explanation": "Verified Answer Key: b. ahead of",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-04",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "4. Fall ........... schedule = make slow progress.",
+      "options": [
+        "a. within",
+        "b. ahead of",
+        "c. on",
+        "d. behind"
+      ],
+      "correctAnswer": "d. behind",
+      "explanation": "Verified Answer Key: d. behind",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-05",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "5. Egyptians like ........... tea with sugar.",
+      "options": [
+        "a. strong",
+        "b. heavy",
+        "c. big",
+        "d. hard"
+      ],
+      "correctAnswer": "a. strong",
+      "explanation": "Verified Answer Key: a. strong",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-06",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "6. If a speaker talks in a monotone, the audience will most likely ...........",
+      "options": [
+        "a. enjoy the talk",
+        "b. be bored",
+        "c. gain more energy",
+        "d. ask more questions"
+      ],
+      "correctAnswer": "b. be bored",
+      "explanation": "Verified Answer Key: b. be bored",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-07",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "7. \"I'm digressing\" means that the speaker is ...........",
+      "options": [
+        "a. ending the presentation",
+        "b. repeating the same point",
+        "c. talking about things unrelated to the subject",
+        "d. asking a question"
+      ],
+      "correctAnswer": "c. talking about things unrelated to the subject",
+      "explanation": "Verified Answer Key: c. talking about things unrelated to the subject",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-08",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "8. \"Available upon request\" usually appears in the ........... section of a CV.",
+      "options": [
+        "a. Objective",
+        "b. Education",
+        "c. Personal information",
+        "d. References"
+      ],
+      "correctAnswer": "d. References",
+      "explanation": "Verified Answer Key: d. References",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-09",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "9. Stay ........... budget = spend the right amount of money.",
+      "options": [
+        "a. behind",
+        "b. up",
+        "c. within",
+        "d. on with"
+      ],
+      "correctAnswer": "c. within",
+      "explanation": "Verified Answer Key: c. within",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte2-b-10",
+      "lectureId": "midterm-exam-2",
+      "lectureTitle": "Mid-Term Exam 2",
+      "slide": "Mid-Term Exam 2 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "10. \"Of course, related ........... product specifications is the issue of performance.\"",
+      "options": [
+        "a. with",
+        "b. to",
+        "c. for",
+        "d. of"
+      ],
+      "correctAnswer": "b. to",
+      "explanation": "Verified Answer Key: b. to",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-01",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "1. Referential ambiguity occurs when a pronoun has an unclear reference.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-02",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "2. Machine learning can decode ambiguity without any context or user interaction.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-03",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "3. \"Strictly forbidden\" is a correct collocation.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-04",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "4. \"Quick\" and \"fast\" can always replace each other in any collocation.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-05",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "5. It is a good idea to have different CVs for different types of jobs.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-06",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "6. Running over time looks good because it shows you have a lot to say.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-07",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "7. When using a microphone, you should not hold it too close to your mouth.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-08",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "8. A CV should include every summer or part-time job, even if it is irrelevant.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "Verified Answer Key: False",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-09",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "9. The word \"light\" can mean both the opposite of heavy and the opposite of dark.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-a-10",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part A: True/False",
+      "type": "true-false",
+      "question": "10. \"Pitch black\" is a collocation that means very dark.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "Verified Answer Key: True",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-01",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "1. \"Old men and women are happy.\" This sentence has ........... ambiguity.",
+      "options": [
+        "a. Referential",
+        "b. Lexical",
+        "c. Syntactic",
+        "d. None"
+      ],
+      "correctAnswer": "c. Syntactic",
+      "explanation": "Verified Answer Key: c. Syntactic",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-02",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "2. AI examines the surrounding text to understand the meaning of \"bank\". This technique is called ...........",
+      "options": [
+        "a. user interaction",
+        "b. cyber security",
+        "c. plagiarism detecting",
+        "d. context analysis"
+      ],
+      "correctAnswer": "d. context analysis",
+      "explanation": "Verified Answer Key: d. context analysis",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-03",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "3. User: \"Where can I buy a bat?\" AI: \"Do you mean the animal or the sports tool?\" This is an example of ...........",
+      "options": [
+        "a. user interaction",
+        "b. context analysis",
+        "c. common sense",
+        "d. None"
+      ],
+      "correctAnswer": "a. user interaction",
+      "explanation": "Verified Answer Key: a. user interaction",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-04",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "4. ........... tasks = give people different responsibilities.",
+      "options": [
+        "a. meet",
+        "b. get",
+        "c. catch",
+        "d. delegate"
+      ],
+      "correctAnswer": "d. delegate",
+      "explanation": "Verified Answer Key: d. delegate",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-05",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "5. ........... the deadline = finish on time.",
+      "options": [
+        "a. meet",
+        "b. fall",
+        "c. stay",
+        "d. get"
+      ],
+      "correctAnswer": "a. meet",
+      "explanation": "Verified Answer Key: a. meet",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-06",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "6. Don't ........... a particular point, i.e. don't spend too long on it.",
+      "options": [
+        "a. project",
+        "b. vary",
+        "c. labor",
+        "d. check"
+      ],
+      "correctAnswer": "c. labor",
+      "explanation": "Verified Answer Key: c. labor",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-07",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "7. \"Project your voice\" means ...........",
+      "options": [
+        "a. shout",
+        "b. speak loudly enough to be heard at the back without shouting",
+        "c. whisper",
+        "d. speak on the same level all the time"
+      ],
+      "correctAnswer": "b. speak loudly enough to be heard at the back without shouting",
+      "explanation": "Verified Answer Key: b. speak loudly enough to be heard at the back without shouting",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-08",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "8. \"Time is moving on, so let's ........... the third area.\"",
+      "options": [
+        "a. turn up",
+        "b. turn to",
+        "c. turning",
+        "d. turn on"
+      ],
+      "correctAnswer": "b. turn to",
+      "explanation": "Verified Answer Key: b. turn to",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-09",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "9. Languages spoken, computer skills, and a driving licence belong in the ........... section of a CV.",
+      "options": [
+        "a. Objective",
+        "b. References",
+        "c. Additional personal skills",
+        "d. Education"
+      ],
+      "correctAnswer": "c. Additional personal skills",
+      "explanation": "Verified Answer Key: c. Additional personal skills",
+      "hasVerifiedAnswer": true
+    },
+    {
+      "id": "mte3-b-10",
+      "lectureId": "midterm-exam-3",
+      "lectureTitle": "Mid-Term Exam 3",
+      "slide": "Mid-Term Exam 3 — Part B: MCQ",
+      "type": "multiple-choice",
+      "question": "10. \"Experienced and ambitious business professional seeking a challenging new role\" is the ........... of a CV.",
+      "options": [
+        "a. References",
+        "b. Education",
+        "c. Work experience",
+        "d. Objective"
+      ],
+      "correctAnswer": "d. Objective",
+      "explanation": "Verified Answer Key: d. Objective",
+      "hasVerifiedAnswer": true
+    }
+  ]
+}
