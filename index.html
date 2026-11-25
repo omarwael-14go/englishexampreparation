@@ -36,6 +36,7 @@
           <li class="nav-item"><button data-view="exam" onclick="App.navigateTo('exam')">Exam Mode</button></li>
           <li class="nav-item"><button data-view="flashcards" onclick="App.navigateTo('flashcards')">Flashcards</button></li>
           <li class="nav-item"><button data-view="review" onclick="App.navigateTo('review')">Quick Review</button></li>
+          <li class="nav-item"><button data-view="missed" onclick="App.navigateTo('missed')" style="color:#F87171;">Missed <span class="badge-missed-count" id="navMissedCount">0</span> <span class="badge-new-pulse badge-rose-pulse" style="font-size:0.58rem; padding:0.1rem 0.35rem; margin-left:0.2rem;">NEW</span></button></li>
           <li class="nav-item"><button onclick="App.scrollToMidterms()" style="color:var(--amber-light);">Mid-Terms <span class="badge-new-pulse" style="font-size:0.6rem; padding:0.1rem 0.4rem; margin-left:0.25rem;">NEW</span></button></li>
         </ul>
       </nav>
@@ -150,6 +151,40 @@
       </div>
 
       
+      
+      <!-- ==========================================
+           NEW: MISSED QUESTIONS SECTION
+           ========================================== -->
+      <section class="new-missed-section" id="missedSection">
+        <div class="section-header-row" style="margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="display:flex; align-items:center; gap: 0.65rem; margin-bottom: 0.35rem;">
+              <span class="badge-new-pulse badge-rose-pulse">NEW</span>
+              <h2 style="font-size: 1.6rem; font-weight: 800; color: #FFFFFF; display: inline-flex; align-items: center; gap: 0.5rem;">
+                Missed Questions Archive
+              </h2>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">
+              All questions answered incorrectly across all lectures and exams, categorized clearly by section.
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+            <button class="btn-primary btn-missed-practice" id="btnPracticeMissed" onclick="App.startPracticeMissed()">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Practice Missed (<span id="homeMissedCountBtn">0</span> Qs)
+            </button>
+            <button class="btn-secondary" onclick="App.navigateTo('missed')">
+              View All Mistakes
+            </button>
+          </div>
+        </div>
+
+        <!-- Section Breakdown Chips -->
+        <div class="missed-breakdown-wrap" id="homeMissedBreakdown">
+          <!-- Rendered dynamically by JS -->
+        </div>
+      </section>
+
       <!-- ==========================================
            NEW: MID-TERM EXAMS SECTION (OFFICIAL 2026)
            ========================================== -->
@@ -240,6 +275,9 @@
         <div class="quiz-filter-group">
           <label style="font-size: 0.85rem; color: var(--text-muted);">Lecture:</label>
           <select id="practiceLectureSelect" class="select-custom" onchange="App.changePracticeLecture(this.value)">
+            <optgroup label="⚠️ My Errors (NEW)">
+              <option value="missed-all">⚠️ Missed Questions Only</option>
+            </optgroup>
             <optgroup label="⭐ Mid-Term Exams (NEW)">
               <option value="midterm-all">All Mid-Term Exams (60 Questions)</option>
               <option value="midterm-exam-1">Mid-Term Exam 1 (20 Questions)</option>
@@ -594,6 +632,41 @@
     <footer class="app-footer">
       <div class="footer-credit">developed by <strong>Omar Wael Omar</strong></div>
     </footer>
+
+  
+    <!-- ==========================================
+         VIEW 6: MISSED QUESTIONS (NEW)
+         ========================================== -->
+    <section id="view-missed" class="view-section">
+      <div class="section-header-row" style="margin-bottom: 1.4rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <div style="display:flex; align-items:center; gap: 0.65rem; margin-bottom: 0.35rem;">
+            <h2>Missed Questions Review</h2>
+            <span class="badge-new-pulse badge-rose-pulse">NEW</span>
+          </div>
+          <p>Review every question you answered incorrectly, categorized by origin, with your answer vs verified slide key.</p>
+        </div>
+        <div style="display:flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;">
+          <button class="btn-primary btn-missed-practice" onclick="App.startPracticeMissed()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Practice Missed Questions
+          </button>
+          <button class="btn-secondary" onclick="App.clearAllMissedQuestions()" title="Mark all missed questions as resolved">
+            Clear Missed List
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter by Section Chips -->
+      <div class="review-filter-chips" id="missedSectionFilterChips" style="margin-bottom: 1.5rem;">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- Missed Questions List -->
+      <div class="review-list" id="missedQuestionsContainer">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </section>
 
   </main>
 

@@ -39,6 +39,7 @@ const App = (function() {
     // Quick Review State
     reviewSearchQuery: '',
     reviewLectureFilter: 'all',
+    missedFilter: 'all',
 
     // Local Storage Loaded Data
     progress: {} // { qId: { answered: true, correct: true, selectedAnswer: any } }
@@ -54,6 +55,7 @@ const App = (function() {
     renderHomeStats();
     renderLectureCards();
     renderMidtermCards();
+    renderHomeMissedSection();
     initPracticeQuestions('all');
     initFlashcardQuestions('all');
     renderQuickReview();
@@ -178,6 +180,14 @@ const App = (function() {
     const homePct = document.getElementById('homeProgressPct');
     if (homeCount) homeCount.textContent = answeredCount;
     if (homePct) homePct.textContent = pct + '%';
+
+    // Update Missed Questions counters & home section
+    const missed = getMissedQuestions();
+    const navMissed = document.getElementById('navMissedCount');
+    const homeMissedBtn = document.getElementById('homeMissedCountBtn');
+    if (navMissed) navMissed.textContent = missed.length;
+    if (homeMissedBtn) homeMissedBtn.textContent = missed.length;
+    renderHomeMissedSection();
   }
 
   // ==========================================
@@ -208,12 +218,15 @@ const App = (function() {
       renderHomeStats();
       renderLectureCards();
       renderMidtermCards();
+      renderHomeMissedSection();
     } else if (viewName === 'practice') {
       renderPracticeQuestion();
     } else if (viewName === 'flashcards') {
       renderFlashcard();
     } else if (viewName === 'review') {
       renderQuickReview();
+    } else if (viewName === 'missed') {
+      renderMissedQuestionsView();
     }
   }
 
@@ -359,6 +372,253 @@ const App = (function() {
     }, 120);
   }
 
+
+  // ==========================================
+  // MISSED QUESTIONS LOGIC (NEW)
+  // ==========================================
+  function getMissedQuestions() {
+    return QUESTIONS_DATA.filter(q => {
+      const p = state.progress[q.id];
+      return p && p.answered && !p.correct;
+    });
+  }
+
+  function getMissedGroupedBySection() {
+    const missed = getMissedQuestions();
+    const grouped = {};
+    missed.forEach(q => {
+      const key = q.lectureId;
+      if (!grouped[key]) {
+        grouped[key] = {
+          title: q.lectureTitle,
+          lectureId: q.lectureId,
+          questions: []
+        };
+      }
+      grouped[key].questions.push(q);
+    });
+    return grouped;
+  }
+
+  function renderHomeMissedSection() {
+    const container = document.getElementById('homeMissedBreakdown');
+    const countBtn = document.getElementById('homeMissedCountBtn');
+    const navCount = document.getElementById('navMissedCount');
+    const btnPractice = document.getElementById('btnPracticeMissed');
+    const missed = getMissedQuestions();
+    const grouped = getMissedGroupedBySection();
+
+    if (countBtn) countBtn.textContent = missed.length;
+    if (navCount) navCount.textContent = missed.length;
+    if (btnPractice) {
+      btnPractice.disabled = missed.length === 0;
+      btnPractice.style.opacity = missed.length === 0 ? '0.6' : '1';
+    }
+
+    if (!container) return;
+    container.innerHTML = '';
+
+    if (missed.length === 0) {
+      container.innerHTML = `
+        <div class="missed-empty-box">
+          <div class="missed-empty-icon">🎉</div>
+          <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--emerald-primary); margin-bottom: 0.35rem;">Zero Missed Questions!</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto;">
+            You currently have no mistakes recorded. Any question you answer incorrectly during practice or exams will be collected here automatically with its exact section origin.
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    // Render chips for each section containing errors
+    Object.keys(grouped).forEach(sectionKey => {
+      const item = grouped[sectionKey];
+      const chip = document.createElement('div');
+      chip.className = 'missed-section-chip';
+      chip.onclick = () => {
+        state.missedFilter = sectionKey;
+        navigateTo('missed');
+      };
+      chip.innerHTML = `
+        <span style="font-weight: 600; color: var(--text-primary);">${item.title}</span>
+        <span class="missed-chip-badge">${item.questions.length} ${item.questions.length === 1 ? 'mistake' : 'mistakes'}</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      `;
+      container.appendChild(chip);
+    });
+  }
+
+  function renderMissedQuestionsView(filter = null) {
+    if (filter !== null) state.missedFilter = filter;
+    const currentFilter = state.missedFilter || 'all';
+
+    const missed = getMissedQuestions();
+    const grouped = getMissedGroupedBySection();
+    const chipsContainer = document.getElementById('missedSectionFilterChips');
+    const listContainer = document.getElementById('missedQuestionsContainer');
+
+    // Update filter chips
+    if (chipsContainer) {
+      chipsContainer.innerHTML = '';
+
+      const allChip = document.createElement('button');
+      allChip.className = `chip-btn ${currentFilter === 'all' ? 'active' : ''}`;
+      allChip.innerHTML = `All Missed (${missed.length})`;
+      allChip.onclick = () => renderMissedQuestionsView('all');
+      chipsContainer.appendChild(allChip);
+
+      Object.keys(grouped).forEach(secKey => {
+        const g = grouped[secKey];
+        const chip = document.createElement('button');
+        chip.className = `chip-btn ${currentFilter === secKey ? 'active' : ''}`;
+        chip.innerHTML = `${g.title} (${g.questions.length})`;
+        chip.onclick = () => renderMissedQuestionsView(secKey);
+        chipsContainer.appendChild(chip);
+      });
+    }
+
+    if (!listContainer) return;
+    listContainer.innerHTML = '';
+
+    let filteredQuestions = missed;
+    if (currentFilter !== 'all') {
+      filteredQuestions = missed.filter(q => q.lectureId === currentFilter);
+    }
+
+    if (filteredQuestions.length === 0) {
+      listContainer.innerHTML = `
+        <div class="missed-empty-box" style="padding: 3.5rem 1.5rem;">
+          <div class="missed-empty-icon">✓</div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--emerald-primary); margin-bottom: 0.4rem;">
+            ${missed.length === 0 ? 'No Missed Questions!' : 'No Mistakes in This Section!'}
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 480px; margin: 0 auto 1.5rem;">
+            ${missed.length === 0 ? 'You have solved all questions correctly or haven\'t made any mistakes yet. Keep up the great work!' : 'You have no unresolved mistakes in this specific section.'}
+          </p>
+          <button class="btn-primary" onclick="App.navigateTo('practice')">Go to Practice Mode</button>
+        </div>
+      `;
+      return;
+    }
+
+    filteredQuestions.forEach((q, idx) => {
+      const p = state.progress[q.id];
+      const userAns = p ? p.userAnswer : 'No answer provided';
+      const card = document.createElement('div');
+      card.className = 'review-card-item';
+      card.style.borderLeft = '4px solid var(--rose-primary)';
+
+      let userAnsText = '';
+      if (typeof userAns === 'object' && userAns !== null) {
+        userAnsText = Object.entries(userAns).map(([k, v]) => `${k} ➔ ${v}`).join(', ');
+      } else {
+        userAnsText = escapeHtml(userAns || 'None');
+      }
+
+      card.innerHTML = `
+        <div class="review-card-top">
+          <div style="display:flex; gap: 0.5rem; align-items:center; flex-wrap: wrap;">
+            <span class="pill-lecture" style="border-color: rgba(244, 63, 94, 0.4); color: #FCA5A5;">
+              📍 Section: ${escapeHtml(q.lectureTitle)}
+            </span>
+            <span class="pill-slide">${escapeHtml(q.slide)}</span>
+            <span class="pill-type">${escapeHtml(formatQuestionType(q.type))}</span>
+          </div>
+          <div style="display:flex; gap: 0.4rem;">
+            <button class="btn-secondary" style="font-size: 0.78rem; padding: 0.35rem 0.65rem;" onclick="App.retakeSingleQuestion('${q.id}')">
+              Solve Again
+            </button>
+            <button class="btn-secondary" style="font-size: 0.78rem; padding: 0.35rem 0.65rem; color: var(--emerald-primary);" onclick="App.markQuestionResolved('${q.id}')" title="Mark this question as resolved">
+              Mark Resolved ✓
+            </button>
+          </div>
+        </div>
+        <div class="review-card-question">${escapeHtml(q.question)}</div>
+        
+        <div style="margin-bottom: 0.75rem; padding: 0.65rem 0.9rem; background: var(--rose-bg); border-radius: var(--radius-sm); border: 1px solid var(--rose-border); font-size: 0.88rem; color: #FECDD3;">
+          <strong style="color: var(--rose-primary);">Your Answer:</strong> ${userAnsText} ✗
+        </div>
+
+        <div class="review-card-answer-box">
+          <strong style="color: var(--emerald-primary);">Verified Correct Answer:</strong>
+          <div style="margin-top: 0.2rem; font-weight: 600;">${escapeHtml(q.correctAnswer || q.explanation || 'See slide notes')}</div>
+          ${q.explanation && q.explanation !== q.correctAnswer ? `<div style="font-size: 0.82rem; margin-top: 0.4rem; color: var(--text-secondary);">${escapeHtml(q.explanation)}</div>` : ''}
+        </div>
+      `;
+
+      listContainer.appendChild(card);
+    });
+  }
+
+  function startPracticeMissed(sectionId = 'all') {
+    let missed = getMissedQuestions();
+    if (sectionId !== 'all') {
+      missed = missed.filter(q => q.lectureId === sectionId);
+    }
+
+    if (missed.length === 0) {
+      alert('You have no missed questions to practice! Well done!');
+      return;
+    }
+
+    state.practiceQuestions = [...missed];
+    state.practiceCurrentIndex = 0;
+    state.practiceLectureId = sectionId === 'all' ? 'missed-all' : 'missed-' + sectionId;
+
+    const select = document.getElementById('practiceLectureSelect');
+    if (select) select.value = 'missed-all';
+
+    navigateTo('practice');
+  }
+
+  function retakeSingleQuestion(qId) {
+    const targetQ = QUESTIONS_DATA.find(q => q.id === qId);
+    if (!targetQ) return;
+
+    state.practiceQuestions = [targetQ];
+    state.practiceCurrentIndex = 0;
+    state.practiceLectureId = targetQ.lectureId;
+
+    const select = document.getElementById('practiceLectureSelect');
+    if (select) select.value = targetQ.lectureId;
+
+    navigateTo('practice');
+  }
+
+  function markQuestionResolved(qId) {
+    if (state.progress[qId]) {
+      state.progress[qId].correct = true;
+      try {
+        localStorage.setItem(STORAGE_KEY_PROGRESS, JSON.stringify(state.progress));
+      } catch (e) {}
+      updateGlobalProgressUI();
+      renderMissedQuestionsView();
+    }
+  }
+
+  function clearAllMissedQuestions() {
+    const missed = getMissedQuestions();
+    if (missed.length === 0) {
+      alert('There are no missed questions to clear.');
+      return;
+    }
+
+    if (confirm(`Are you sure you want to clear all ${missed.length} missed question records?`)) {
+      missed.forEach(q => {
+        if (state.progress[q.id]) {
+          state.progress[q.id].correct = true;
+        }
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY_PROGRESS, JSON.stringify(state.progress));
+      } catch (e) {}
+      updateGlobalProgressUI();
+      renderMissedQuestionsView();
+      renderHomeMissedSection();
+    }
+  }
+
 // ==========================================
   // PRACTICE MODE LOGIC
   // ==========================================
@@ -367,6 +627,13 @@ const App = (function() {
       state.practiceQuestions = QUESTIONS_DATA.filter(q => !q.lectureId.startsWith('midterm-exam-'));
     } else if (lectureId === 'midterm-all') {
       state.practiceQuestions = QUESTIONS_DATA.filter(q => q.lectureId.startsWith('midterm-exam-'));
+    } else if (lectureId === 'missed-all' || lectureId.startsWith('missed-')) {
+      const sec = lectureId.replace('missed-', '');
+      let missed = getMissedQuestions();
+      if (sec !== 'all') {
+        missed = missed.filter(q => q.lectureId === sec);
+      }
+      state.practiceQuestions = missed.length > 0 ? missed : QUESTIONS_DATA.filter(q => !q.lectureId.startsWith('midterm-exam-'));
     } else {
       state.practiceQuestions = QUESTIONS_DATA.filter(q => q.lectureId === lectureId);
     }
@@ -1469,6 +1736,11 @@ const App = (function() {
     startPracticeLecture,
     startPracticeMidterm,
     scrollToMidterms,
+    startPracticeMissed,
+    retakeSingleQuestion,
+    markQuestionResolved,
+    clearAllMissedQuestions,
+    renderMissedQuestionsView,
     changePracticeLecture,
     resetCurrentLecturePractice,
     practiceNext,

@@ -2535,3 +2535,128 @@ body.light-theme .midterm-exam-card:hover {
   border-color: var(--amber-primary);
 }
 
+
+
+/* ==========================================================================
+   NEW: MISSED QUESTIONS SECTION STYLES
+   ========================================================================== */
+.new-missed-section {
+  background: linear-gradient(145deg, rgba(28, 16, 26, 0.92), rgba(16, 20, 36, 0.85));
+  border: 1.5px solid rgba(244, 63, 94, 0.4);
+  border-radius: var(--radius-xl);
+  padding: 1.8rem 1.6rem;
+  margin-bottom: 2.8rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(244, 63, 94, 0.1);
+}
+
+.new-missed-section::after {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(244, 63, 94, 0.14) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.badge-rose-pulse {
+  background: linear-gradient(135deg, #F43F5E, #E11D48) !important;
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.55) !important;
+}
+
+.badge-missed-count {
+  background: var(--rose-primary);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.12rem 0.48rem;
+  border-radius: 999px;
+  margin-left: 0.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.missed-breakdown-wrap {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+}
+
+.missed-section-chip {
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.missed-section-chip:hover {
+  background: rgba(244, 63, 94, 0.2);
+  border-color: var(--rose-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.2);
+}
+
+.missed-chip-badge {
+  background: var(--rose-primary);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
+.btn-missed-practice {
+  background: linear-gradient(135deg, #F43F5E, #E11D48) !important;
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.35) !important;
+}
+
+.btn-missed-practice:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FB7185, #F43F5E) !important;
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+.missed-empty-box {
+  text-align: center;
+  padding: 2.2rem 1.5rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px dashed rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  width: 100%;
+}
+
+.missed-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+body.light-theme .new-missed-section {
+  background: linear-gradient(145deg, #FFF1F2, #FFFFFF);
+  border-color: rgba(244, 63, 94, 0.35);
+  box-shadow: 0 10px 30px rgba(244, 63, 94, 0.06);
+}
+
+body.light-theme .missed-section-chip {
+  background: #FFFFFF;
+  border-color: rgba(244, 63, 94, 0.25);
+  color: #0F172A;
+}
+
+body.light-theme .missed-section-chip:hover {
+  background: #FFF1F2;
+}
+
